@@ -5,6 +5,7 @@ yii2-browser-info
 [![Total Downloads](https://poser.pugx.org/alexander-suter/yii2-browser-info/downloads)](https://packagist.org/packages/alexander-suter/yii2-browser-info)
 [![Build Status](https://secure.travis-ci.org/alexander-suter/yii2-browser-info.png)](http://travis-ci.org/alexander-suter/yii2-browser-info)
 [![Dependency Status](https://www.versioneye.com/php/alexander-suter:yii2-browser-info/dev-master/badge.png)](https://www.versioneye.com/php/alexander-suter:yii2-browser-info/dev-master)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/alexander-suter/yii2-browser-info/badges/quality-score.png?s=b1074a1ff6d0b214d54fa5ab7abbb90fc092471d)](https://scrutinizer-ci.com/g/alexander-suter/yii2-browser-info/)
 
 Yii2 extension. Provides detailed browser information.
 
