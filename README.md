@@ -40,3 +40,26 @@ Create a cronjob and execute following command:
 ./yii browser-info/update-cache
 ```
 
+Use dependency injecto to define the concret instance:
+
+```
+\Yii::$container->set('asu\browserinfo\BrowserInfo', [
+            'class' => 'asu\browserinfo\BrowserInfoBrowscap',
+            'memoryLimit' => '512M' 
+]);
+```
+
+To get browser information in a controller you can no use your DI-Definition:
+
+```
+   class SiteController extends Controller {
+      private $browserInfo = null;
+      public function __construct($id, $module, BrowserInfo $browserInfo, $config = []) {
+        $this->browserInfo = $browserInfo;
+        parent::__construct($id, $module, $config);
+      }
+      public function actionIndex() {
+        echo $this->browserInfo->getBrowserName();
+      }
+}
+```
