@@ -76,5 +76,3 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
         return Yii::$app->runtimePath . DIRECTORY_SEPARATOR . $this->cacheDir;
     }
 }
-
-?>

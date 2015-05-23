@@ -18,5 +18,3 @@ interface BrowserInfo {
     public function updateCache();
 
 }
-
-?>

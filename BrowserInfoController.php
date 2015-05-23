@@ -21,5 +21,3 @@ class BrowserInfoController extends Controller {
     }
 
 }
-
-?>
