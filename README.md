@@ -52,7 +52,7 @@ Use dependency injecto to define the concret instance:
 To get browser information in a controller you can no use your DI-Definition:
 
 ```
-   class SiteController extends Controller {
+class SiteController extends Controller {
       private $browserInfo = null;
       public function __construct($id, $module, BrowserInfo $browserInfo, $config = []) {
         $this->browserInfo = $browserInfo;
