@@ -14,7 +14,7 @@ Current available providers:
 
 ## Installation
 
-The preferred way to installa this extension is through [composer](http://getcomposer.org/download/).
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
 To install, either run
 
