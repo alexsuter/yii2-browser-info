@@ -40,7 +40,7 @@ Create a cronjob and execute following command:
 ./yii browser-info/update-cache
 ```
 
-Use dependency injecto to define the concret instance:
+Use dependency injection to define the concret instance:
 
 ```
 \Yii::$container->set('asu\browserinfo\BrowserInfo', [
