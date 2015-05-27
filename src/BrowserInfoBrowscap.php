@@ -4,6 +4,7 @@ namespace asu\browserinfo;
 use Yii;
 use yii\base\Component;
 use phpbrowscap\Browscap;
+use phpbrowscap\phpbrowscap;
 
 class BrowserInfoBrowscap extends Component implements BrowserInfo {
     
@@ -33,11 +34,11 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
     public function getBrowserName() {
         $browserName = null;
         if ($this->existsCache()) {
-            $bc = new Browscap($this->getCacheDir());
+            $bc = $this->createBrowscap();
             $bc->doAutoUpdate = false;
-            $current_browser = $bc->getBrowser();
-            if ($current_browser != null) {
-                $browserName = $current_browser->Browser;
+            $currentBrowser = $bc->getBrowser();
+            if ($currentBrowser != null) {
+                $browserName = $currentBrowser->Browser;
             }
         }
         return empty($browserName) ? null : $browserName;
@@ -51,10 +52,22 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
         if (!file_exists($cacheDir)) {
             mkdir($cacheDir);
         }
-        $bc = new Browscap($cacheDir);
+        $bc = $this->createBrowscap();
         if (!$bc->updateCache()) {
             Yii::error('error while updating browscap cache');
         }
+    }
+    
+    /**
+     * Creates a browscap instance.
+     * 
+     * @return \phpbrowscap\Browscap
+     */
+    private function createBrowscap() {
+        $browscap = new Browscap($this->getCacheDir());
+        $browscap->cacheFilename = $this->cacheFilename;
+        $browscap->iniFilename = $this->iniFilename;
+        return $browscap;
     }
     
     private function existsCache() {
