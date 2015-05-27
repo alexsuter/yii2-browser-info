@@ -30,19 +30,6 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
      * @var string
      */
     public $iniFilename = 'browscap.ini';
-
-    public function getBrowserName() {
-        $browserName = null;
-        if ($this->existsCache()) {
-            $bc = $this->createBrowscap();
-            $bc->doAutoUpdate = false;
-            $currentBrowser = $bc->getBrowser();
-            if ($currentBrowser != null) {
-                $browserName = $currentBrowser->Browser;
-            }
-        }
-        return empty($browserName) ? null : $browserName;
-    }
     
     public function updateCache() {
         if ($this->memoryLimit != null) {
@@ -58,6 +45,25 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
         }
     }
     
+    public function getBrowserName() {
+        $browserName = null;
+        $currentBrowser = $this->getCurrentBrowser();
+        if ($currentBrowser != null) {
+            $browserName = $currentBrowser->Browser;
+        }
+        return empty($browserName) ? null : $browserName;
+    }
+    
+    public function isBot() {
+        $currentBrowser = $this->getCurrentBrowser();
+        if ($currentBrowser != null) {
+            if (property_exists($currentBrowser, 'Browser_Type') && $currentBrowser->Browser_Type == 'Bot/Crawler') {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * Creates a browscap instance.
      * 
@@ -67,7 +73,18 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
         $browscap = new Browscap($this->getCacheDir());
         $browscap->cacheFilename = $this->cacheFilename;
         $browscap->iniFilename = $this->iniFilename;
+        // Working with the full browscap.ini (need for isBot information)
+        $browscap->remoteIniUrl = 'http://browscap.org/stream?q=Full_PHP_BrowsCapINI';
         return $browscap;
+    }
+    
+    private function getCurrentBrowser() {
+        if ($this->existsCache()) {
+            $bc = $this->createBrowscap();
+            $bc->doAutoUpdate = false;
+            return $bc->getBrowser();
+        }
+        return null;
     }
     
     private function existsCache() {

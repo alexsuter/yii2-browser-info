@@ -9,5 +9,11 @@ class BrowserInfoBrowscapTest extends \PHPUnit_Framework_TestCase {
         $browserName = $testee->getBrowserName();
         $this->assertEquals(null, $browserName);
     }
+    
+    public function testIsBotReturnFalseWhenNoCacheIsAvailable() {
+        $testee = new BrowserInfoBrowscap();
+        $isBot = $testee->isBot();
+        $this->assertFalse($isBot);
+    }
 
 }

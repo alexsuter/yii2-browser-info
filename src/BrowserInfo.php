@@ -16,5 +16,12 @@ interface BrowserInfo {
      * Updates the browser name directory cache.
      */
     public function updateCache();
+    
+    /**
+     * Returns if the current browser is a bot or not.
+     * 
+     *  @return boolean True, if the current browser is a bot, otherwise false.
+     */
+    public function isBot();
 
 }
