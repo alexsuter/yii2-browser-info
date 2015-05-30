@@ -1,5 +1,4 @@
 <?php
-
 namespace asu\browserinfo;
 
 use Yii;
@@ -9,10 +8,11 @@ use phpbrowscap\phpbrowscap;
 
 /**
  * The browscap implementation for BrowserInfo.
- * 
+ *
  * @author Alex
  */
-class BrowserInfoBrowscap extends Component implements BrowserInfo {
+class BrowserInfoBrowscap extends Component implements BrowserInfo
+{
 
     /**
      * Memory limit to set while updating cache.
@@ -46,21 +46,23 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
      */
     public $iniFilename = 'browscap.ini';
 
-    public function updateCache() {
+    public function updateCache()
+    {
         if ($this->memoryLimit != null) {
             ini_set('memory_limit', $this->memoryLimit);
         }
         $cacheDir = $this->getCacheDir();
-        if (!file_exists($cacheDir)) {
+        if (! file_exists($cacheDir)) {
             mkdir($cacheDir);
         }
         $bc = $this->createBrowscap();
-        if (!$bc->updateCache()) {
+        if (! $bc->updateCache()) {
             Yii::error('error while updating browscap cache');
         }
     }
 
-    public function getBrowserName() {
+    public function getBrowserName()
+    {
         $browserName = null;
         $currentBrowser = $this->getCurrentBrowser();
         if ($currentBrowser != null) {
@@ -69,7 +71,8 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
         return empty($browserName) ? null : $browserName;
     }
 
-    public function isBot() {
+    public function isBot()
+    {
         $currentBrowser = $this->getCurrentBrowser();
         if ($currentBrowser != null) {
             if (property_exists($currentBrowser, 'Browser_Type') && $currentBrowser->Browser_Type == 'Bot/Crawler') {
@@ -84,7 +87,8 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
      *
      * @return \phpbrowscap\Browscap
      */
-    private function createBrowscap() {
+    private function createBrowscap()
+    {
         $browscap = new Browscap($this->getCacheDir());
         $browscap->cacheFilename = $this->cacheFilename;
         $browscap->iniFilename = $this->iniFilename;
@@ -93,7 +97,8 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
         return $browscap;
     }
 
-    private function getCurrentBrowser() {
+    private function getCurrentBrowser()
+    {
         if ($this->existsCache()) {
             $bc = $this->createBrowscap();
             $bc->doAutoUpdate = false;
@@ -102,23 +107,26 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo {
         return null;
     }
 
-    private function existsCache() {
+    private function existsCache()
+    {
         return ($this->existsCacheDir() && $this->existsFiles());
     }
 
-    private function existsCacheDir() {
+    private function existsCacheDir()
+    {
         return file_exists($this->getCacheDir());
     }
 
-    private function existsFiles() {
+    private function existsFiles()
+    {
         $path = $this->getCacheDir();
         $pathIniFile = $path . DIRECTORY_SEPARATOR . $this->iniFilename;
         $pathCacheFile = $path . DIRECTORY_SEPARATOR . $this->cacheFilename;
         return file_exists($pathIniFile) && file_exists($pathCacheFile);
     }
 
-    private function getCacheDir() {
+    private function getCacheDir()
+    {
         return Yii::getAlias($this->cacheDir);
     }
-
 }
