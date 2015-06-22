@@ -42,7 +42,7 @@ Create a cronjob and execute following command:
 
 Use dependency injection to define the concret instance:
 
-```
+```php
 Yii::$container->set('asu\browserinfo\BrowserInfo', [
             'class' => 'asu\browserinfo\BrowserInfoBrowscap',
             'memoryLimit' => '512M' 
@@ -52,7 +52,7 @@ The Browscap implementation needs much memory to update the cache.
 
 To get browser information in a controller you can now use your DI-Definition:
 
-```
+```php
 class SiteController extends Controller {
       private $browserInfo = null;
       public function __construct($id, $module, BrowserInfo $browserInfo, $config = []) {
