@@ -1,22 +1,21 @@
 {
     "name": "alexander-suter/yii2-browser-info",
-	"description": "Browser Information for Yii2",
-	"keywords": ["yii2", "browser", "browser-info"],
-	"homepage": "https://github.com/alexander-suter/yii2-browser-info",
-	"type": "yii2-extension",
-	"license": "BSD-3-Clause",
+    "description": "Browser Information for Yii2",
+    "keywords": ["yii2", "browser", "browser-info"],
+    "homepage": "https://github.com/alexander-suter/yii2-browser-info",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
     "authors": [
-		{
-			"name": "Alexander Suter",
-			"email": "alexander.suter.ch@gmail.com"
-		}
+        {
+            "name": "Alexander Suter",
+            "email": "alexander.suter.ch@gmail.com"
+        }
     ],
-	"minimum-stability": "stable",
+    "minimum-stability": "stable",
     "require": {
         "yiisoft/yii2": "2.0.*",
-        "browscap/browscap-php": "dev-master"
+        "browscap/browscap-php": "2.0.4"
     },
-
     "autoload": {
         "psr-4": {
             "asu\\browserinfo\\": "src/"

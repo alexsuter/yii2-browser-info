@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bc009ec600ed5cc8dc5beb8ecae069cb",
+    "hash": "901600199f3ce692f4c005154d7fad41",
     "packages": [
         {
             "name": "bower-asset/jquery",
@@ -165,16 +165,16 @@
         },
         {
             "name": "browscap/browscap-php",
-            "version": "dev-master",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/browscap/browscap-php.git",
-                "reference": "ff65e17e85f420a2a6096d7febb225e19cea40d9"
+                "reference": "4819a25d68edb3658caf70574c4a39078b68ee49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/browscap/browscap-php/zipball/ff65e17e85f420a2a6096d7febb225e19cea40d9",
-                "reference": "ff65e17e85f420a2a6096d7febb225e19cea40d9",
+                "url": "https://api.github.com/repos/browscap/browscap-php/zipball/4819a25d68edb3658caf70574c4a39078b68ee49",
+                "reference": "4819a25d68edb3658caf70574c4a39078b68ee49",
                 "shasum": ""
             },
             "require": {
@@ -186,7 +186,8 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "phpbrowscap\\": "src/"
+                    "phpbrowscap": "src/",
+                    "phpbrowscapTest": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -215,7 +216,7 @@
                 "get_browser",
                 "user agent"
             ],
-            "time": "2015-06-12 11:02:15"
+            "time": "2014-10-09 07:43:37"
         },
         {
             "name": "cebe/markdown",
@@ -460,9 +461,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "browscap/browscap-php": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
