@@ -10,7 +10,7 @@ yii2-browser-info
 Yii2 extension. Provides detailed information about the browser.
 
 Current available providers:
-- Browscap (https://github.com/browscap/browscap)
+- Browscap (https://github.com/browscap/browscap-php)
 
 ## Installation
 
