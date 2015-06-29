@@ -15,7 +15,7 @@ class BrowserInfoBrowscapTest extends \PHPUnit_Framework_TestCase
     {
         $_SERVER['HTTP_USER_AGENT'] = 'Opera/9.63 (Macintosh; Intel Mac OS X; U; en) Presto/2.1.1';
         $testee = new BrowserInfoBrowscap([
-            'cacheDir' => __DIR__ . '/fixtures/browscap'
+            'cacheDir' => __DIR__ . '/fixtures/browscap',
         ]);
         $browserName = $testee->getBrowserName();
         $this->assertEquals('Opera', $browserName);

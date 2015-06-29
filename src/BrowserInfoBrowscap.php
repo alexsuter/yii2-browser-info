@@ -102,8 +102,14 @@ class BrowserInfoBrowscap extends Component implements BrowserInfo
         if ($this->existsCache()) {
             $bc = $this->createBrowscap();
             $bc->doAutoUpdate = false;
-            return $bc->getBrowser();
+            // Browscap will update cache also if you define doAutoUpdate = false.
+            // If your cache file is not in the same version as your browscap implementation.
+            // We will never update cache (needs much memory, long time), when you just need some browser infos, we will return null.
+            if (! $bc->shouldCacheBeUpdated()) {
+                return $bc->getBrowser();
+            }
         }
+        \Yii::warning('You must update your browscap cache', 'browser-info');
         return null;
     }
 

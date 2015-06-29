@@ -12,7 +12,17 @@ require_once (__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
 
 $application = new yii\console\Application([
     'id' => 'test-console-application',
-    'basePath' => dirname(__DIR__)
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => ['log'],
+    'components' => [
+        'log' => [
+            'targets' => [
+                [
+                    'class' => 'pahanini\log\ConsoleTarget',
+                ]
+            ],
+        ],
+    ],
 ]);
 
 ?>
